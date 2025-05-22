@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto mt-10 p-6 bg-gray-800 rounded-lg shadow-lg text-center">
+        <h1 class="text-3xl font-bold mb-4">🤖 AI Assistant</h1>
+
+        <!-- Dropdown for function selection -->
+        <label for="functionSelect" class="sr-only">Choose AI function</label>
+        <select id="functionSelect" class="mb-4 px-4 py-2 text-black rounded-lg" aria-label="Choose AI function">
+            <option value="question">Answer Questions</option>
+            <option value="summarize">Summarize Text</option>
+            <option value="creative">Generate Creative Content</option>
+        </select>
+
+        <!-- User input field -->
+        <textarea id="userInput" class="w-full p-3 text-black rounded-lg mb-4" placeholder="Enter your prompt..."></textarea>
+
+        <!-- Ask button -->
+        <button onclick="askAI()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg">
+            Ask AI
+        </button>
+
+        <!-- Response area -->
+        <div id="responseArea" class="mt-6 bg-gray-700 p-4 rounded-lg hidden">
+            <h2 class="text-xl font-bold">Response:</h2>
+            <p id="responseText" class="mt-2"></p>
+
+            <!-- Feedback buttons -->
+            <div class="mt-4">
+                <span class="font-bold">Was this helpful?</span>
+                <button onclick="sendFeedback('yes')" class="ml-2 bg-green-500 px-4 py-2 rounded-lg">👍 Yes</button>
+                <button onclick="sendFeedback('no')" class="ml-2 bg-red-500 px-4 py-2 rounded-lg">👎 No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function askAI() {
+            let userInput = document.getElementById("userInput").value;
+            let functionType = document.getElementById("functionSelect").value;
+
+            if (!userInput.trim()) {
+                alert("Please enter a prompt.");
+                return;
+            }
+
+            // Send request to Flask backend
+            const response = await fetch("/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ prompt: userInput, function: functionType }),
+            });
+
+            const data = await response.json();
+
+            if (data.error) {
+                document.getElementById("responseText").textContent = "Error: " + data.error;
+            } else {
+                document.getElementById("responseText").textContent = data.response;
+                document.getElementById("responseArea").classList.remove("hidden");
+            }
+        }
+
+        function sendFeedback(feedback) {
+            alert("Thank you for your feedback: " + feedback);
+        }
+    </script>
+</body>
+</html>
