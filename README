@@ -1,0 +1,57 @@
+#  AI Assistant Web Application
+
+##  Project Overview
+The **AI Assistant Web Application** is a web-based intelligent assistant designed to interact with users in real time and perform multiple AI-powered tasks. The project demonstrates practical implementation of **Prompt Engineering**, **Generative AI integration**, and **interactive web development**.
+
+The assistant allows users to ask questions, generate creative content, and summarize text through a simple and dynamic interface.
+
+---
+
+## Problem Statement
+Many users lack an accessible platform to experiment with Generative AI capabilities such as content generation, summarization, and conversational assistance within a single lightweight web application.  
+This project provides a unified AI assistant that demonstrates how web applications can seamlessly integrate AI models for everyday productivity.
+
+---
+
+##  Features
+-  Real-time conversational AI interaction  
+- Text summarization capability  
+- Creative content generation  
+-  Feedback loop for improved responses  
+-  Clean and interactive web interface  
+-  Lightweight Flask backend  
+
+---
+
+##  Architecture Overview
+The application follows a simple client-server architecture:
+
+**Frontend**
+- HTML
+- CSS
+- JavaScript
+- Handles user input and displays responses
+
+**Backend**
+- Flask web framework
+- Processes requests
+- Sends prompts to AI API
+- Returns generated responses
+
+**AI Layer**
+- Generative AI API integration
+- Prompt engineering for task-specific outputs
+
+---
+
+##  Tech Stack
+- Python  
+- Flask  
+- HTML5  
+- CSS3  
+- JavaScript  
+- Generative AI API  
+
+---
+
+cd AI-Assistant-
