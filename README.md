@@ -25,7 +25,7 @@
 
 # 🤖 AI Assistant
 
-An intelligent **web-based AI Assistant** developed as a **Prompt Engineering Major Project**.  
+An intelligent **web-based AI Assistant** developed as a **Prompt Engineering Project**.  
 This application integrates **Google Gemini API** with a Flask backend to provide conversational AI capabilities including answering questions, summarizing content, and generating creative responses.
 
 ---
